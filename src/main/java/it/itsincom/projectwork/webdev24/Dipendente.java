@@ -2,7 +2,7 @@ package it.itsincom.projectwork.webdev24;
 
 import java.time.LocalDate;
 
-public class Dipendente {
+public class Dipendente implements Comparable<Dipendente>{
     private String ruolo;
     private String codFiscale;
     private String nome;
@@ -69,6 +69,10 @@ public class Dipendente {
     public String toString() {
         return "Dipendente [ruolo=" + ruolo + ", codFiscale=" + codFiscale + ", nome=" + nome + ", cognome=" + cognome
                 + ", dataAssunzione=" + dataAssunzione + "]";
+    }
+    @Override
+    public int compareTo(Dipendente o) {
+        return this.cognome.compareTo(o.cognome);
     }
 
 

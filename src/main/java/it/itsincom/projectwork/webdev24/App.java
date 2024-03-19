@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,7 @@ public final class App {
      * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
+        //Lettura da File
         Scanner elencoDip = new Scanner(new File("C:\\Project Work\\main\\elenco dipendenti.txt"));
         ArrayList<Dipendente> listaDipendenti = new ArrayList<>();
         while (elencoDip.hasNextLine()) {
@@ -31,8 +33,14 @@ public final class App {
                 listaDipendenti.add(new Manager(token[0], token[1], token[2], token[3], LocalDate.parse(token[4]), token[5], token[6]));
             }
         }
+        //Creazione azienda con arraylist passato da file
         Azienda recruitItSolutions = new Azienda(listaDipendenti);
+        //Stampa del nome dell'azienda con la lista dei dipendenti
         System.out.println(recruitItSolutions.toString());
+
+        //Stampa dell'elenco in ordine alfabetico dei dipendenti
+        Collections.sort(recruitItSolutions.getDipendenti());
+        System.out.println("Elenco dei dipendenti in ordine alfabetico\n" + recruitItSolutions.toString());
         elencoDip.close();
     }
 }
