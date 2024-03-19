@@ -3,6 +3,7 @@ package it.itsincom.projectwork.webdev24;
 import java.time.LocalDate;
 
 public class Dipendente {
+    private String ruolo;
     private String codFiscale;
     private String nome;
     private String cognome;
@@ -48,12 +49,31 @@ public class Dipendente {
         this.stipendio = stipendio;
     }
 
-    public Dipendente(String codFiscale, String nome, String cognome, LocalDate dataAssunzione) {
+    public String getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
+    }
+
+    public Dipendente(String ruolo, String codFiscale, String nome, String cognome, LocalDate dataAssunzione) {
+        this.ruolo = ruolo;
         this.codFiscale = codFiscale;
         this.nome = nome;
         this.cognome = cognome;
         this.dataAssunzione = dataAssunzione;
     }
+
+    @Override
+    public String toString() {
+        return "Dipendente [ruolo=" + ruolo + ", codFiscale=" + codFiscale + ", nome=" + nome + ", cognome=" + cognome
+                + ", dataAssunzione=" + dataAssunzione + "]";
+    }
+
+
+
+
 
 
 

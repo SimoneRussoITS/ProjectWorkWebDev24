@@ -24,10 +24,10 @@ public class Azienda {
 
     @Override
     public String toString() {
-        return "Azienda [nomeAzienda=" + nomeAzienda + ", dipendenti=" + dipendenti + "]";
+        return "Azienda [nomeAzienda=" + nomeAzienda + "\nDipendenti=\n" + dipendenti + "]";
     }
 
-    
+
 
 
 }
