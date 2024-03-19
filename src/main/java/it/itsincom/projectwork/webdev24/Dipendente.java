@@ -70,10 +70,13 @@ public class Dipendente implements Comparable<Dipendente>{
         return "Dipendente [ruolo=" + ruolo + ", codFiscale=" + codFiscale + ", nome=" + nome + ", cognome=" + cognome
                 + ", dataAssunzione=" + dataAssunzione + "]";
     }
+
     @Override
     public int compareTo(Dipendente o) {
         return this.cognome.compareTo(o.cognome);
     }
+
+    
 
 
 
