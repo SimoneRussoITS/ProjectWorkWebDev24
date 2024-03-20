@@ -27,6 +27,14 @@ public class Azienda {
         return "Azienda [nomeAzienda=" + nomeAzienda + "\nDipendenti=\n" + dipendenti + "]";
     }
 
+    public String visualizzaStipendi() {
+        String s = "";
+        for (Dipendente d : dipendenti) {
+            s += "codice fiscale: " + d.getCodFiscale() + ", nome: " + d.getNome() + ", cognome: " + d.getCognome() + ", stipendio: " + String.valueOf(d.getStipendio()) + "\n";
+        }
+        return s;
+    }
+
 
 
 

@@ -43,11 +43,11 @@ public final class App {
         // Stampa del nome dell'azienda con la lista dei dipendenti
         System.out.println(recruitItSolutions.toString());
 
-        // Stampa dell'elenco in ordine alfabetico dei dipendenti
+        // Prima Richiesta: Stampa dell'elenco in ordine alfabetico dei dipendenti
         Collections.sort(recruitItSolutions.getDipendenti());
         System.out.println("Elenco dei dipendenti in ordine alfabetico\n" + recruitItSolutions.toString());
 
-        // L'elenco dei dipendenti (dati anagrafici) di una categoria presa come parametro in ordine di tempo di permanenza in azienda
+        // Seconda Richiesta: L'elenco dei dipendenti (dati anagrafici) di una categoria presa come parametro in ordine di tempo di permanenza in azienda
         sortCategory(recruitItSolutions.getDipendenti(), "tecnico"); //cambiare il secondo parametro a seconda della categoria che si vuole filtrare
 
         //Creo un oggetto di tipo Manager che utilizzo per calcolare gli stipendi dei manager e applico il metodo calcolaStipendio() della classe Manager utilizzando la lista dei dipendenti
@@ -58,10 +58,8 @@ public final class App {
         Dirigente dirigente = new Dirigente();
         dirigente.calcolaStipendio(recruitItSolutions.getDipendenti());
 
-        //Stampa dell'elenco di tutti gli stipendi
-        for (Dipendente dipendente : recruitItSolutions.getDipendenti()) {
-            System.out.println(dipendente.getStipendio());
-        }
+        //Terza Richiesta: L’elenco dei dipendenti (la stringa contenente: codice fiscale, nome, cognome stipendio) con relativo stipendio mensile
+        System.out.println(recruitItSolutions.visualizzaStipendi());
 
 
         elencoDip.close();
