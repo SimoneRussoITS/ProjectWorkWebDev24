@@ -65,6 +65,9 @@ public class Dipendente implements Comparable<Dipendente>{
         this.dataAssunzione = dataAssunzione;
     }
 
+    public Dipendente() {
+    }
+
     @Override
     public String toString() {
         return "Dipendente [ruolo=" + ruolo + ", codFiscale=" + codFiscale + ", nome=" + nome + ", cognome=" + cognome
@@ -76,7 +79,9 @@ public class Dipendente implements Comparable<Dipendente>{
         return this.cognome.compareTo(o.cognome);
     }
 
-    
+
+
+
 
 
 

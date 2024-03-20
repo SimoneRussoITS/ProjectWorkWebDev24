@@ -1,6 +1,7 @@
 package it.itsincom.projectwork.webdev24;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Tecnico extends Dipendente{
     private String figuraRiferimento;
@@ -11,6 +12,7 @@ public class Tecnico extends Dipendente{
         super(ruolo, codFiscale, nome, cognome, dataAssunzione);
         this.figuraRiferimento = figuraRiferimento;
         this.specialita = specialita;
+        this.stipendio = calcolaStipendio();
     }
 
     public String getFiguraRiferimento() {
@@ -56,15 +58,12 @@ public class Tecnico extends Dipendente{
         return super.toString() + "Tecnico [figuraRiferimento=" + figuraRiferimento + ", specialita=" + specialita + "]\n";
     }
 
-
-
-
-
-
-
-
-
-
-
+    public int calcolaStipendio() {
+        if (Period.between(this.getDataAssunzione(), LocalDate.now()).getYears() >= 10) {
+            return stipendio = 1600;
+        } else {
+            return stipendio = 1500;
+        }
+    }
 
 }

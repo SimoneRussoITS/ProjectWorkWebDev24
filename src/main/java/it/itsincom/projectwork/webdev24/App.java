@@ -48,17 +48,35 @@ public final class App {
         System.out.println("Elenco dei dipendenti in ordine alfabetico\n" + recruitItSolutions.toString());
 
         // L'elenco dei dipendenti (dati anagrafici) di una categoria presa come parametro in ordine di tempo di permanenza in azienda
-        sortCategory(recruitItSolutions.getDipendenti(), "dirigente"); //cambiare il secondo parametro a seconda della categoria che si vuole filtrare
+        sortCategory(recruitItSolutions.getDipendenti(), "tecnico"); //cambiare il secondo parametro a seconda della categoria che si vuole filtrare
+
+        //Creo un oggetto di tipo Manager che utilizzo per calcolare gli stipendi dei manager e applico il metodo calcolaStipendio() della classe Manager utilizzando la lista dei dipendenti
+        Manager manager = new Manager();
+        manager.calcolaStipendio(recruitItSolutions.getDipendenti());
+
+        //Creo un oggetto di tipo Dirigente che utilizzo per calcolare gli stipendi dei dirigenti e applico il metodo calcolaStipendio() della classe Dirigente utilizzando la lista dei dipendenti
+        Dirigente dirigente = new Dirigente();
+        dirigente.calcolaStipendio(recruitItSolutions.getDipendenti());
+
+        //Stampa dell'elenco di tutti gli stipendi
+        for (Dipendente dipendente : recruitItSolutions.getDipendenti()) {
+            System.out.println(dipendente.getStipendio());
+        }
+
 
         elencoDip.close();
     }
 
     public static void sortCategory(ArrayList<Dipendente> a, String p) {
+        //Ordinamento dell'ArrayList in base alla data di assunzione tramite una classe anonima che implementa l'interfaccia Comparator<Dipendente> per definire il criterio di ordinamento.
         a.sort(new Comparator<Dipendente>() {
+            //Implementazione del metodo compare, che confronta due oggetti Dipendente in base alla loro data di assunzione.
+            @Override
             public int compare(Dipendente o1, Dipendente o2) {
                 return o1.getDataAssunzione().compareTo(o2.getDataAssunzione());
             }
         });
+        //Utilizzo di un ciclo foreach che stampa solo i dipendenti della categoria passata come parametro
         System.out.println("Elenco dipendenti della categoria " + p + "\n");
         for (Dipendente dipendente : a) {
             if (dipendente.getRuolo().equals(p)) {
