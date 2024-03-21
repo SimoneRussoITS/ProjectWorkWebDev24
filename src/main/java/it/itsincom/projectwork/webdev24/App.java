@@ -1,11 +1,15 @@
 package it.itsincom.projectwork.webdev24;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Hello world!
@@ -79,6 +83,22 @@ public final class App {
         // Terza Richiesta: L’elenco dei dipendenti (la stringa contenente: codice
         // fiscale, nome, cognome stipendio) con relativo stipendio mensile
         System.out.println(recruitItSolutions.visualizzaStipendi());
+
+        // Richiesta Facoltativa: Scrittura dei dati in un file json di struttura analoga a quella fornita nella sottoprova 4
+        // Creazione di un oggetto Gson con formattazione per la visualizzazione leggibile
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting() // Impostazione della formattazione per una visualizzazione più leggibile del JSON
+                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter()) // Registrazione di un adapter personalizzato per il tipo LocalDate
+                .create(); // Creazione dell'oggetto Gson
+        // Conversione dell'oggetto recruitItSolutions in formato JSON
+        String json = gson.toJson(recruitItSolutions);
+        // Creazione di un FileWriter per scrivere il JSON su file
+        FileWriter file = new FileWriter("C:\\Project Work\\main\\azienda.json");
+        // Scrittura del JSON sul file
+        file.write(json);
+        // Chiusura del FileWriter
+        file.close();
+
         elencoDip.close();
     }
 
@@ -106,4 +126,5 @@ public final class App {
             }
         }
     }
+
 }
