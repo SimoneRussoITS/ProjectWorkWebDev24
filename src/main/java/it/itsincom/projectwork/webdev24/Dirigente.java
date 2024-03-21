@@ -42,7 +42,7 @@ public class Dirigente extends Dipendente {
 
     @Override
     public String toString() {
-        return super.toString() + "Dirigente [divisione=" + divisione + "]\n";
+        return super.toString() + " Divisione: " + divisione + "\n";
     }
 
     public void calcolaStipendio(ArrayList<Dipendente> d) {
@@ -54,11 +54,13 @@ public class Dirigente extends Dipendente {
                 Dirigente dirigente = (Dirigente) dipendente;
                 // Imposto un stipendio base di 2000
                 dirigente.stipendio = 2500;
-                // Eseguo un'altra iterazione per aggiungere allo stipendio dei Dirigenti il 10% dello stipendio di tutti i dipendenti
+                // Eseguo un'altra iterazione per aggiungere allo stipendio dei Dirigenti il 10%
+                // dello stipendio di tutti i dipendenti
                 for (Dipendente dipendente2 : d) {
                     // Verifico se il dipendente che sto ciclando non è di tipo Dirigente
                     if (!(dipendente2 instanceof Dirigente)) {
-                        //Se true, sovrascrivo lo stipendio del dirigente aggiungendo il 10% dello stipendio del dipendente che sto ciclando
+                        // Se true, sovrascrivo lo stipendio del dirigente aggiungendo il 10% dello
+                        // stipendio del dipendente che sto ciclando
                         dirigente.stipendio += dipendente2.getStipendio() * 0.1;
                     }
                 }

@@ -3,7 +3,7 @@ package it.itsincom.projectwork.webdev24;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Tecnico extends Dipendente{
+public class Tecnico extends Dipendente {
     private String figuraRiferimento;
     private String specialita;
 
@@ -55,13 +55,18 @@ public class Tecnico extends Dipendente{
 
     @Override
     public String toString() {
-        return super.toString() + "Tecnico [figuraRiferimento=" + figuraRiferimento + ", specialita=" + specialita + "]\n";
+        return super.toString() + " Codice Fiscale Riferimento" + figuraRiferimento + ", Specialità: " + specialita
+                + "\n";
     }
 
     public int calcolaStipendio() {
+        // Eseguo un controllo utilizzando la data di assunzione del tecnico e la data
+        // di oggi e calcolo il periodo di tempo (in anni) trascorso tra le due date
         if (Period.between(this.getDataAssunzione(), LocalDate.now()).getYears() >= 10) {
+            // Se il risultato è maggiore o uguale a 10, imposto uno stipendio di 1600
             return stipendio = 1600;
         } else {
+            // In caso contrario, imposto uno stipendio di 1500
             return stipendio = 1500;
         }
     }

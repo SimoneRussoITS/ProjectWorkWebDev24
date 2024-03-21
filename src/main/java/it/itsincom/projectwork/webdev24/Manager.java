@@ -57,27 +57,32 @@ public class Manager extends Dipendente {
 
     @Override
     public String toString() {
-        return super.toString() + "Manager [figuraRiferimento=" + figuraRiferimento + ", settoreComp=" + settoreComp
-                + "]\n";
+        return super.toString() + " Codice Fiscale Riferimento: " + figuraRiferimento + ", Settore:" + settoreComp
+                + "\n";
     }
 
     public void calcolaStipendio(ArrayList<Dipendente> d) {
         for (Dipendente dipendente : d) {
-            //Verifico se il dipendente che sto ciclando è di tipo Manager
+            // Verifico se il dipendente che sto ciclando è di tipo Manager
             if (dipendente instanceof Manager) {
-                //Eseguo un cast per convertire un dipendente in un oggetto di tipo Manager e per poter accedere ai suoi metodi specifici
+                // Eseguo un cast per convertire un dipendente in un oggetto di tipo Manager e
+                // per poter accedere ai suoi metodi specifici
                 Manager manager = (Manager) dipendente;
-                //Imposto un stipendio base di 2000
+                // Imposto un stipendio base di 2000
                 manager.stipendio = 2000;
-                //Eseguo un'altra iterazione per trovare i tecnici associati al manager che sto prendendo in considerazione
+                // Eseguo un'altra iterazione per trovare i tecnici associati al manager che sto
+                // prendendo in considerazione
                 for (Dipendente dipendente2 : d) {
-                    //Verifico se il dipendente che sto ciclando è di tipo Tecnico
+                    // Verifico se il dipendente che sto ciclando è di tipo Tecnico
                     if (dipendente2 instanceof Tecnico) {
-                        //Eseguo un cast per convertire un dipendente2 in un oggetto di tipo Tecnico e per poter accedere ai suoi metodi specifici
+                        // Eseguo un cast per convertire un dipendente2 in un oggetto di tipo Tecnico e
+                        // per poter accedere ai suoi metodi specifici
                         Tecnico tecnico = (Tecnico) dipendente2;
-                        //Verifico se il codice fiscale associato al tecnico corrisponde a quello del manager che sto prendendo in considerazione
+                        // Verifico se il codice fiscale associato al tecnico corrisponde a quello del
+                        // manager che sto prendendo in considerazione
                         if (tecnico.getFiguraRiferimento().equalsIgnoreCase(manager.getCodFiscale())) {
-                            //Se true, sovrascrivo lo stipendio del manager aggiungendo il 10% dello stipendio del tecnico
+                            // Se true, sovrascrivo lo stipendio del manager aggiungendo il 10% dello
+                            // stipendio del tecnico
                             manager.stipendio += tecnico.getStipendio() * 0.1;
                         }
                     }

@@ -2,7 +2,7 @@ package it.itsincom.projectwork.webdev24;
 
 import java.time.LocalDate;
 
-public class Dipendente implements Comparable<Dipendente>{
+public class Dipendente implements Comparable<Dipendente> {
     private String ruolo;
     private String codFiscale;
     private String nome;
@@ -13,6 +13,7 @@ public class Dipendente implements Comparable<Dipendente>{
     public String getCodFiscale() {
         return codFiscale;
     }
+
     public void setCodFiscale(String codFiscale) {
         this.codFiscale = codFiscale;
     }
@@ -70,26 +71,12 @@ public class Dipendente implements Comparable<Dipendente>{
 
     @Override
     public String toString() {
-        return "Dipendente [ruolo=" + ruolo + ", codFiscale=" + codFiscale + ", nome=" + nome + ", cognome=" + cognome
-                + ", dataAssunzione=" + dataAssunzione + "]";
+        return "Dipendente (" + ruolo + "), Codice Fiscale: " + codFiscale + ", Nome: " + nome + ", Cognome: " + cognome
+                + ", Data di Assunzione: " + dataAssunzione;
     }
 
     @Override
     public int compareTo(Dipendente o) {
         return this.cognome.compareTo(o.cognome);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
