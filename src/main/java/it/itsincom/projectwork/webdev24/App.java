@@ -24,6 +24,7 @@ public final class App {
      * @param args The arguments of the program.
      * @throws Exception
      */
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
         // Lettura da File
         Scanner elencoDip = new Scanner(new File("../main/elenco dipendenti.txt"));
@@ -65,8 +66,20 @@ public final class App {
 
         // Seconda Richiesta: L'elenco dei dipendenti (dati anagrafici) di una categoria
         // presa come parametro in ordine di tempo di permanenza in azienda
-        sortCategory(recruitItSolutions.getDipendenti(), "manager"); // cambiare il secondo parametro a seconda della
-                                                                     // categoria che si vuole filtrare
+        Scanner in = new Scanner(System.in);
+        System.out.println("Inserire la categoria di dipendente che si vuole filtrare (tecnico/dirigente/manager)");
+        // Creo una variabile che prende un parametro da input
+        String filtro = in.nextLine();
+        // Effettuo un controllo sulla variabile "filtro"
+        if (filtro.toLowerCase().equals("tecnico") || filtro.toLowerCase().equals("dirigente")
+                || filtro.toLowerCase().equals("manager")) {
+            //Se la categoria inserita in input corrisponde a una valida (tecnico, manager o dirigente), allora viene stampato l'elenco dei dipendenti come da richiesta
+            sortCategory(recruitItSolutions.getDipendenti(), filtro);
+            in.close();
+        } else {
+            //Se la categoria inserita non esiste o non viene inserito nulla, viene sollevata un'eccezione
+            throw new Exception(filtro + " non è una categoria esistente");
+        }
 
         // Creo un oggetto di tipo Manager che utilizzo per calcolare gli stipendi dei
         // manager e applico il metodo calcolaStipendio() della classe Manager
@@ -84,11 +97,16 @@ public final class App {
         // fiscale, nome, cognome stipendio) con relativo stipendio mensile
         System.out.println(recruitItSolutions.visualizzaStipendi());
 
-        // Richiesta Facoltativa: Scrittura dei dati in un file json di struttura analoga a quella fornita nella sottoprova 4
-        // Creazione di un oggetto Gson con formattazione per la visualizzazione leggibile
+        // Richiesta Facoltativa: Scrittura dei dati in un file json di struttura
+        // analoga a quella fornita nella sottoprova 4
+        // Creazione di un oggetto Gson con formattazione per la visualizzazione
+        // leggibile
         Gson gson = new GsonBuilder()
-                .setPrettyPrinting() // Impostazione della formattazione per una visualizzazione più leggibile del JSON
-                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter()) // Registrazione di un adapter personalizzato per il tipo LocalDate
+                .setPrettyPrinting() // Impostazione della formattazione per una visualizzazione più leggibile del
+                                     // JSON
+                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter()) // Registrazione di un adapter
+                                                                                  // personalizzato per il tipo
+                                                                                  // LocalDate
                 .create(); // Creazione dell'oggetto Gson
         // Conversione dell'oggetto recruitItSolutions in formato JSON
         String json = gson.toJson(recruitItSolutions);
