@@ -26,7 +26,7 @@ public final class App {
      */
     public static void main(String[] args) throws Exception {
         // Lettura da File
-        Scanner elencoDip = new Scanner(new File("C:\\Project Work\\main\\elenco dipendenti.txt"));
+        Scanner elencoDip = new Scanner(new File("../main/elenco dipendenti.txt"));
         ArrayList<Dipendente> listaDipendenti = new ArrayList<>();
         // Creazione azienda con arraylist vuoto che verrà popolato con i dipendenti
         // presenti nel file recruitItSolutions.aggiungiDipendente
@@ -93,7 +93,7 @@ public final class App {
         // Conversione dell'oggetto recruitItSolutions in formato JSON
         String json = gson.toJson(recruitItSolutions);
         // Creazione di un FileWriter per scrivere il JSON su file
-        FileWriter file = new FileWriter("C:\\Project Work\\main\\azienda.json");
+        FileWriter file = new FileWriter("../main/azienda.json");
         // Scrittura del JSON sul file
         file.write(json);
         // Chiusura del FileWriter
