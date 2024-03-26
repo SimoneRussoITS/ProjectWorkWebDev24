@@ -81,17 +81,11 @@ public final class App {
             throw new Exception(filtro + " non è una categoria esistente");
         }
 
-        // Creo un oggetto di tipo Manager che utilizzo per calcolare gli stipendi dei
-        // manager e applico il metodo calcolaStipendio() della classe Manager
-        // utilizzando la lista dei dipendenti
-        Manager manager = new Manager();
-        manager.calcolaStipendio(recruitItSolutions.getDipendenti());
+        //Calcolo gli stipendi dei manager
+        recruitItSolutions.calcolaStipendiManager(recruitItSolutions.getDipendenti());
 
-        // Creo un oggetto di tipo Dirigente che utilizzo per calcolare gli stipendi dei
-        // dirigenti e applico il metodo calcolaStipendio() della classe Dirigente
-        // utilizzando la lista dei dipendenti
-        Dirigente dirigente = new Dirigente();
-        dirigente.calcolaStipendio(recruitItSolutions.getDipendenti());
+        //Calcolo gli stipendi dei dirigenti
+        recruitItSolutions.calcolaStipendioDirigenti(recruitItSolutions.getDipendenti());
 
         // Terza Richiesta: L’elenco dei dipendenti (la stringa contenente: codice
         // fiscale, nome, cognome stipendio) con relativo stipendio mensile
