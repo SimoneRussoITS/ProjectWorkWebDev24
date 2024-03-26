@@ -13,9 +13,6 @@ public class Manager extends Dipendente {
         this.settoreComp = settoreComp;
     }
 
-    public Manager() {
-    }
-
     public String getFiguraRiferimento() {
         return figuraRiferimento;
     }

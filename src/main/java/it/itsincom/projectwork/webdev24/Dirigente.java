@@ -11,9 +11,6 @@ public class Dirigente extends Dipendente {
         this.divisione = divisione;
     }
 
-    public Dirigente() {
-    }
-
     public String getDivisione() {
         return divisione;
     }
